@@ -1,11 +1,14 @@
 # KA3 Web Development
 
-Website van KA3 Web Development: statische HTML, CSS en JavaScript, zonder buildstap.
+Website van KA3 Web Development: statische HTML, CSS en JavaScript, zonder buildstap. De site staat in `public/` en wordt gepubliceerd als Cloudflare Worker met statische assets.
 
 ## Bestanden
 
+Alle sitebestanden staan in `public/`.
+
 | Bestand | Doel |
 | --- | --- |
+| `wrangler.jsonc` (hoofdmap) | Cloudflare-configuratie: Worker `development`, publiceert `./public` |
 | `index.html` | Homepage met diensten, portfolio, werkwijze en contactformulier |
 | `website.html`, `webshop.html`, `onderhoud.html` | Pagina's per dienst |
 | `project.html` | Detailpagina voor projecten, gevuld vanuit `projects.js` |
@@ -16,7 +19,7 @@ Website van KA3 Web Development: statische HTML, CSS en JavaScript, zonder build
 
 ## Lokaal bekijken
 
-Open `index.html` in je browser, of start een lokale server, bijvoorbeeld met de Live Server-extensie in VS Code.
+Open `public/index.html` in je browser, of start een lokale server met `npx wrangler dev` in de hoofdmap (of de Live Server-extensie in VS Code).
 
 ## Aanpassen
 
@@ -25,8 +28,10 @@ Open `index.html` in je browser, of start een lokale server, bijvoorbeeld met de
 - **Kleuren:** `--blue` en `--green` bovenin `style.css`.
 - **Contactformulier:** zet een Formspree-adres (of vergelijkbaar) in `FORM_ENDPOINT` in `script.js`. Zonder endpoint opent het formulier het e-mailprogramma van de bezoeker.
 
-## Online zetten met GitHub Pages
+## Online zetten met Cloudflare
 
-1. Ga in deze repository naar **Settings → Pages**.
-2. Kies bij Source de branch `main` en de map `/ (root)`, en klik op **Save**.
-3. Een eigen domein koppel je in hetzelfde scherm onder **Custom domain**.
+De configuratie staat in `wrangler.jsonc`: alles in `public/` wordt gepubliceerd naar de Worker `development`.
+
+- **Handmatig:** voer in de hoofdmap `npx wrangler deploy` uit.
+- **Automatisch:** koppel deze repository in het Cloudflare-dashboard bij **Workers & Pages → development → Settings → Builds**. Elke push naar `main` wordt dan gepubliceerd.
+- **Eigen domein:** voeg het toe bij **Workers & Pages → development → Settings → Domains & Routes**.
