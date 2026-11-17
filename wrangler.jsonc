@@ -1,0 +1,9 @@
+{
+  // Statische site: alles in ./public wordt als losse bestanden gepubliceerd.
+  // De naam hoort overeen te komen met de naam van het project in Cloudflare.
+  "name": "development",
+  "compatibility_date": "2025-10-08",
+  "assets": {
+    "directory": "./public"
+  }
+}
