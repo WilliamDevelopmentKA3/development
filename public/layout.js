@@ -6,9 +6,10 @@ const NAV = [
   ["onderhoud.html", "Onderhoud &amp; beveiliging"],
   ["index.html#portfolio", "Portfolio"]
 ];
-const huidigePagina = location.pathname.split("/").pop() || "index.html";
+const zonderHtml = s => s.replace(/\.html$/, "");
+const huidigePagina = zonderHtml(location.pathname.split("/").pop() || "index");
 const navLinks = NAV.map(([href, label]) =>
-  `<a href="${href}"${href === huidigePagina ? ' aria-current="page"' : ""}>${label}</a>`).join("");
+  `<a href="${href}"${zonderHtml(href) === huidigePagina ? ' aria-current="page"' : ""}>${label}</a>`).join("");
 
 document.getElementById("site-header").outerHTML = `
 <header class="site-header">
