@@ -5,5 +5,7 @@
   "compatibility_date": "2025-10-08",
   "assets": {
     "directory": "./public"
-  }
+  },
+  // Nodig voor previewbuilds van andere branches (npx wrangler preview).
+  "previews": {}
 }
